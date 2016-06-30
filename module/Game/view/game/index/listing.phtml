@@ -1,0 +1,60 @@
+<link href="<?php echo $this->basePath(); ?>/js/lib/select/bootstrap-select.min.css" media="screen" rel="stylesheet" type="text/css">
+<link href="<?php echo $this->basePath(); ?>/css/game/index/listing.css" media="screen" rel="stylesheet" type="text/css">
+
+<div class="listing_display">
+    <div class="row">
+
+    <?php
+    $images = explode(',', $this->listing[0]['url']);
+
+    foreach($images as $url) { ?>
+        <div class="col-md-6">
+            <img class="listing_images" src="<?php echo $this->basePath(); ?>/uploads/images/<?php echo $url; ?>">
+        </div>
+
+    <?php }?>
+    </div>
+    <div class="col-md-6">
+        <table class="table listing_table">
+            <thead>
+            <th colspan="2" class="text-center">Details</th>
+            </thead>
+            <tbody>
+            <tr><td>color</td><td><?php echo $this->listing[0]['color']; ?></td></tr>
+            <tr><td>Transmission</td><td><?php echo $this->listing[0]['transmission']; ?></td></tr>
+            <tr><td>Body Type</td><td><?php echo $this->listing[0]['body_type']; ?></td></tr>
+            <tr><td>Note</td><td><?php echo $this->listing[0]['note']; ?></td></tr>
+            <tr><td>Price</td><td>$<?php echo $this->listing[0]['price']; ?></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table class="table listing_table">
+            <thead>
+            <th class="text-center" colspan="2">Reviews</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="text-center">Rating</td>
+                <td class="text-center">Comments</td>
+            </tr>
+            <?php foreach($this->reviews as $review) { ?>
+                <tr><td><?php echo $review['rating']; ?></td><td><?php echo $review['comment']; ?></td></tr>
+            <?php }?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <form method="post" action="<?php echo $this->basePath(); ?>/game/index/listing?id=<?php echo $this->listing[0]['listing_id']; ?>">
+            <textarea name="message" class="control-group" cols="50" rows="10" placeholder="Type your message....."></textarea>
+            <input type="button" class="btn btn-primary send_mail_button" value="Send Mail to Seller" name="send_mail">
+        </form>
+    </div>
+
+
+
+</div>
+
+<script src="<?php echo $this->basePath(); ?>/js/game/index/buyer_home.js"></script>
+<script src="<?php echo $this->basePath(); ?>/js/lib/select/bootstrap-select.min.js"></script>

@@ -1,0 +1,13 @@
+.listing_images{
+    width: 100%;
+}
+.listing_display{
+    margin: 20px;
+}
+.listing_table{
+    text-align: center;
+}
+.send_mail_button{
+    margin-left: 20px;
+    margin-top: -27px;
+}

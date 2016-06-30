@@ -1,0 +1,51 @@
+<link href="<?php echo $this->basePath(); ?>/js/lib/select/bootstrap-select.min.css" media="screen" rel="stylesheet" type="text/css">
+<link href="<?php echo $this->basePath(); ?>/css/game/index/buyer_home.css" media="screen" rel="stylesheet" type="text/css">
+
+<div class="buyer_search">
+    <div class="input-group">
+        <form class="search_submit" method="post" action="<?php echo $this->basePath(); ?>/game/index/buyerhome">
+            <select name="select_vehical" class="select_vehical form-control" data-live-search="true">
+                <option></option>
+                <?php foreach($this->vehicleTypes as $type) { ?>
+                    <option value="<?php echo $type['vehicle_id']; ?>"><?php echo $type['vehicle_name']; ?></option>
+                <?php } ?>
+            </select>
+            <input type="text" name="keyword_search" class="form-control keyword_search" placeholder="Keyword" aria-describedby="basic-addon1">
+            <input type="number" name="high_range_search" class="form-control high_range_search" placeholder="Max Price" aria-describedby="basic-addon1">
+            <input type="number" name="low_range_search" class="form-control low_range_search" placeholder="Min Price" aria-describedby="basic-addon1">
+            <input type="submit" name="search_submit" class="btn btn-primary search_submit" value="Search">
+        </form>
+    </div>
+</div>
+<div class="search_results_display">
+<table class="table search_results_table">
+    <thead>
+        <th> Image </th>
+        <th> Year </th>
+        <th> Make </th>
+        <th> Model </th>
+        <th> Price </th>
+    </thead>
+    <tbody>
+        <?php
+        if(count($this->search_results) > 0){
+        foreach($this->search_results as $result) { ?>
+            <tr class='clickable-row' data-href='<?php echo $this->basePath(); ?>/game/index/listing?id=<?php echo $result['listing_id']; ?>'>
+                <td><img class="list_display_thumbnail" src="<?php echo $this->basePath(); ?>/uploads/images/<?php echo $result['url']; ?>"></td>
+                <td><?php echo $result['year']; ?></td>
+                <td><?php echo $result['make']; ?></td>
+                <td><?php echo $result['model']; ?></td>
+                <td>$<?php echo $result['price']; ?></td>
+            </tr>
+        <?php }
+        } else { ?>
+        <tr>
+            <td colspan="4"> No Results to display</td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+</div>
+
+<script src="<?php echo $this->basePath(); ?>/js/game/index/buyer_home.js"></script>
+<script src="<?php echo $this->basePath(); ?>/js/lib/select/bootstrap-select.min.js"></script>
