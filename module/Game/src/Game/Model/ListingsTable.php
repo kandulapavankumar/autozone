@@ -119,4 +119,32 @@ class ListingsTable extends BaseModelTable
 
         return $result;
     }
+
+    public function getUserEmailByListingId($id)
+    {
+        $sql = $this->sql;
+        $select = $sql->select();
+        $select->from(array('ls' => 'listings'));
+        $select->columns(
+            array(
+                'listing_to_user'
+            )
+        );
+
+        $select->join(
+            array('us' => 'users'), 'ls.listing_to_user = us.user_id', array('email')
+        );
+
+        $select->group('us.user_id');
+
+        $statement = $sql->prepareStatementForSqlObject($select);
+
+        $resultSet = $statement->execute();
+        $result = array();
+        foreach ($resultSet as $row) {
+            $result = $row['email'];
+        }
+
+        return $result;
+    }
 }

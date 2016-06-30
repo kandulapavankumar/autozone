@@ -38,6 +38,18 @@ class IndexController extends BaseController
         $listing = $this->getTable('Listings')->getListing($id);
         $reviews = $this->getTable('SellerReviews')->getReviewsByListingId($id);
 
+        $message = $this->params()->fromPost('message');
+
+        if(isset($message) && $message != ""){
+            $sellerEmail = $this->getTable('Listings')->getUserEmailByListingId($id);
+            try {
+                $subject = "Enquiry";
+                $this->sendMail($sellerEmail, $message, $subject);
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
+        }
+
         return new ViewModel(array('listing' => $listing, 'reviews' => $reviews));
     }
 
@@ -46,6 +58,5 @@ class IndexController extends BaseController
 
         return new ViewModel();
     }
-
 
 }

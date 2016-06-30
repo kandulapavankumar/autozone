@@ -7,6 +7,7 @@ use Zend\EventManager\EventManagerAwareInterface;
 use Zend\Session\Container;
 use Zend\EventManager\EventManagerInterface;
 use Zend\View\Model\ViewModel;
+use Zend\Mail;
 
 class BaseController extends AbstractActionController implements EventManagerAwareInterface
 {
@@ -56,20 +57,21 @@ class BaseController extends AbstractActionController implements EventManagerAwa
         return $controllerTable;
     }
 
-    public function sendmailAction() {
-        session_start();
-        try {
-            $emails = "info@testing.com";
-            $useremail = $_POST['email'];
-            $name = $_POST['name'];
-            $message = $_POST['message'];
-            $emailDescription = "Name : " . $name . "\n" . "email :" . $useremail . "\n" . "Message :" . $message;
-            $subject = "We have new contact - " . $name;
-            $adminBase = new \Admin\Controller\BaseController();
-            $adminBase->sendMail($emails, $emailDescription, $subject);
+    public function sendMail($emails, $emailDescription, $subject) {
+        $mail = new Mail\Message();
+        $mail->setBody($emailDescription);
+        $mail->setFrom('info@test.com','Testing');
 
-        } catch (\Exception $e) {
-            echo $e->getMessage();
+        if (is_array($emails)) {
+            foreach($emails as $key => $value) {
+                $mail->addTo($value);
+            }
+        } else {
+            $mail->addTo($emails);
         }
+        $mail->setSubject($subject);
+
+        $transport = new Mail\Transport\Sendmail();
+        $transport->send($mail);
     }
 }

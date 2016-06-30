@@ -47,8 +47,8 @@
 
     <div class="col-md-12">
         <form method="post" action="<?php echo $this->basePath(); ?>/game/index/listing?id=<?php echo $this->listing[0]['listing_id']; ?>">
-            <textarea name="message" class="control-group" cols="50" rows="10" placeholder="Type your message....."></textarea>
-            <input type="button" class="btn btn-primary send_mail_button" value="Send Mail to Seller" name="send_mail">
+            <textarea name="message" class="control-group" cols="50" rows="10" placeholder="Type your message....." required></textarea>
+            <input type="submit" class="btn btn-primary send_mail_button" value="Send Mail to Seller" name="send_mail">
         </form>
     </div>
 
