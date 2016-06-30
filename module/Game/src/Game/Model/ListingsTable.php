@@ -101,11 +101,13 @@ class ListingsTable extends BaseModelTable
             $select->where->lessThanOrEqualTo('ls.price', ($maximumPrice));
         }
 
-        /*if(isset($keyword) && $keyword != null){
-            $select->where('make LIKE ?', '%'.$keyword.'%')
-                ->ORwhere('model LIKE ?', '%'.$keyword.'%')
-                ->ORwhere('description LIKE ?', '%'.$keyword.'%');
-        }*/
+        if(isset($keyword) && $keyword != null){
+            $select->where->like('make', '%'.$keyword.'%')
+                ->OR
+                ->like('model', '%'.$keyword.'%')
+                ->OR
+                ->like('description', '%'.$keyword.'%');
+        }
 
         $statement = $sql->prepareStatementForSqlObject($select);
 

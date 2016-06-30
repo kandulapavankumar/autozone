@@ -65,16 +65,9 @@ class BaseController extends AbstractActionController implements EventManagerAwa
             $message = $_POST['message'];
             $emailDescription = "Name : " . $name . "\n" . "email :" . $useremail . "\n" . "Message :" . $message;
             $subject = "We have new contact - " . $name;
-            $captcha = $_POST['captcha'];
-            if (isset($_POST["captcha"]) && $_POST["captcha"] != "" && $_SESSION["code"] == $_POST["captcha"]) {
-                $adminBase = new \Admin\Controller\BaseController();
-                $adminBase->sendMail($emails, $emailDescription, $subject);
+            $adminBase = new \Admin\Controller\BaseController();
+            $adminBase->sendMail($emails, $emailDescription, $subject);
 
-                return new JsonModel(['success']);
-            } else {
-
-                return new JsonModel(['failure', $_SESSION]);
-            }
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
