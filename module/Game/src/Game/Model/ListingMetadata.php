@@ -16,9 +16,6 @@ class ListingMetadata extends BaseModel
     public $note;
     public $createdAt;
     public $updatedAt;
-    
-      
-    
 
     public function exchangeArray($data)
     {

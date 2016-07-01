@@ -18,9 +18,6 @@ class Listings extends BaseModel
     public $price;
     public $createdAt;
     public $updatedAt;
-    
-      
-    
 
     public function exchangeArray($data)
     {

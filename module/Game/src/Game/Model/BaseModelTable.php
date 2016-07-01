@@ -136,14 +136,14 @@ class BaseModelTable
             $whereArray = array();
             $whereArray['id'] = $sessionId;
             $tableData = $this->tableGateway->select($whereArray);
-            
+
             foreach ($tableData as $projectRow) {
                 $result[] = $projectRow;
             }
         } catch (\Exception $e) {
             return false;
         }
-        
+
         return $result;
     }
 

@@ -12,9 +12,6 @@ class VehicleTypes extends BaseModel
     public $vehicleName;
     public $createdAt;
     public $updatedAt;
-    
-      
-    
 
     public function exchangeArray($data)
     {

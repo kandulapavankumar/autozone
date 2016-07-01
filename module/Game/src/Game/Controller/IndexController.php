@@ -9,7 +9,6 @@ class IndexController extends BaseController
 
     public function indexAction()
     {
-        
 
     }
 
@@ -20,7 +19,7 @@ class IndexController extends BaseController
         $maximumPrice = $this->params()->fromPost('high_range_search');
         $minimumPrice = $this->params()->fromPost('low_range_search');
 
-        if(isset($vehicleType) || isset($keyword) || isset($maximumPrice) || isset($minimumPrice)){
+        if (isset($vehicleType) || isset($keyword) || isset($maximumPrice) || isset($minimumPrice)) {
             $results = $this->getTable('Listings')->search($vehicleType, $keyword, $maximumPrice, $minimumPrice);
         } else {
             $results = $this->getTable('Listings')->getAll();
@@ -40,7 +39,7 @@ class IndexController extends BaseController
 
         $message = $this->params()->fromPost('message');
 
-        if(isset($message) && $message != ""){
+        if (isset($message) && $message != "") {
             $sellerEmail = $this->getTable('Listings')->getUserEmailByListingId($id);
             try {
                 $subject = "Enquiry";

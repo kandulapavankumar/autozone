@@ -13,10 +13,10 @@ class BaseController extends AbstractActionController implements EventManagerAwa
 {
 
     public function setEventManager(EventManagerInterface $events)
-    {   
+    {
         parent::setEventManager($events);
         $controller = $this;
-       
+
         $events->attach('dispatch', function ($e) use ($controller) {
             $sessionData = new Container('user');
 
@@ -29,24 +29,25 @@ class BaseController extends AbstractActionController implements EventManagerAwa
                 $sessionData['userName'] = $identity->getFirstname() . ' ' . $identity->getLastname();
 
                 $controller->layout('game/layout');
-                $controller->layout()->setVariables(array('userName' => $sessionData['userName'] ));
+                $controller->layout()->setVariables(array('userName' => $sessionData['userName']));
 
                 $userRole = $controller->getTable('Users')->getUserRole($sessionData['userId']);
 
                 $actionName = $this->params('action');
-                if($actionName == 'index' && $userRole == 'Seller'){
+                if ($actionName == 'index' && $userRole == 'Seller') {
+
                     return $controller->redirect()->toRoute('sellerhome');
                 } elseif ($actionName == 'index' && $userRole == 'Buyer') {
+
                     return $controller->redirect()->toRoute('buyerhome');
                 }
-
             } else {
-                return $controller->redirect()->toRoute('zfcuser');
 
+                return $controller->redirect()->toRoute('zfcuser');
             }
         });
     }
-    
+
 
     public function getTable($tableName)
     {
@@ -57,13 +58,14 @@ class BaseController extends AbstractActionController implements EventManagerAwa
         return $controllerTable;
     }
 
-    public function sendMail($emails, $emailDescription, $subject) {
+    public function sendMail($emails, $emailDescription, $subject)
+    {
         $mail = new Mail\Message();
         $mail->setBody($emailDescription);
-        $mail->setFrom('info@test.com','Testing');
+        $mail->setFrom('info@test.com', 'Testing');
 
         if (is_array($emails)) {
-            foreach($emails as $key => $value) {
+            foreach ($emails as $key => $value) {
                 $mail->addTo($value);
             }
         } else {

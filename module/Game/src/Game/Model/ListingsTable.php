@@ -89,24 +89,24 @@ class ListingsTable extends BaseModelTable
         );
         $select->group('li.belongs_to_listing');
 
-        if(isset($vehicleType) && $vehicleType != null){
+        if (isset($vehicleType) && $vehicleType != null) {
             $select->where(array('ls.belongs_to_vehicle_type' => $vehicleType));
         }
 
-        if(isset($minimumPrice) && $minimumPrice != null){
+        if (isset($minimumPrice) && $minimumPrice != null) {
             $select->where->greaterThanOrEqualTo('ls.price', ($minimumPrice));
         }
 
-        if(isset($maximumPrice) && $maximumPrice != null){
+        if (isset($maximumPrice) && $maximumPrice != null) {
             $select->where->lessThanOrEqualTo('ls.price', ($maximumPrice));
         }
 
-        if(isset($keyword) && $keyword != null){
-            $select->where->like('make', '%'.$keyword.'%')
+        if (isset($keyword) && $keyword != null) {
+            $select->where->like('make', '%' . $keyword . '%')
                 ->OR
-                ->like('model', '%'.$keyword.'%')
+                ->like('model', '%' . $keyword . '%')
                 ->OR
-                ->like('description', '%'.$keyword.'%');
+                ->like('description', '%' . $keyword . '%');
         }
 
         $statement = $sql->prepareStatementForSqlObject($select);

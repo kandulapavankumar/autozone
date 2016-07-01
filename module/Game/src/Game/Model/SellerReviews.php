@@ -15,9 +15,6 @@ class SellerReviews extends BaseModel
     public $createdAt;
     public $updatedAt;
     
-      
-    
-
     public function exchangeArray($data)
     {
         $this->sellerReviewId = (!empty($data['seller_review_id'])) ? $data['seller_review_id'] : null;

@@ -28,8 +28,6 @@ class User implements UserInterface
     protected $createdAt;
     protected $updatedAt;
 
-
-
     public function getId()
     {
         return $this->userId;
@@ -37,7 +35,7 @@ class User implements UserInterface
 
     public function setId($id)
     {
-        $this->userId = (int) $id;
+        $this->userId = (int)$id;
         return $this;
     }
 
@@ -134,7 +132,8 @@ class User implements UserInterface
         return $this;
     }
 
-    public function setMultipleFields($fields, $fieldValues) {
+    public function setMultipleFields($fields, $fieldValues)
+    {
         foreach ($fields as $key => $value) {
             $this->$fields[$key] = $fieldValues[$key];
         }
@@ -148,10 +147,9 @@ class User implements UserInterface
 
     public function setState($state)
     {
-        $this->state = (int) $state;
+        $this->state = (int)$state;
         return $this;
     }
-
 }
 
 ?>

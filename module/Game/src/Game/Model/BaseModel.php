@@ -36,7 +36,7 @@ class BaseModel
 
     public function exchangeArray($data)
     {
-        
+
     }
 
 }

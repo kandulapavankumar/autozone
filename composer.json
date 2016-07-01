@@ -12,8 +12,6 @@
         "zendframework/zendframework": "2.2.*",
         "zendframework/zend-developer-tools": "dev-master",
         "zendframework/zftool": "dev-master",
-        "kkamkou/tp-minify" : "dev-master",
-        "zf-commons/zfc-user": "dev-master",
-        "phpoffice/phppresentation": "dev-master"
+        "zf-commons/zfc-user": "dev-master"
     }
 }

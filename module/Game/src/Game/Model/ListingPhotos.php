@@ -13,9 +13,6 @@ class ListingPhotos extends BaseModel
     public $url;
     public $createdAt;
     public $updatedAt;
-    
-      
-    
 
     public function exchangeArray($data)
     {

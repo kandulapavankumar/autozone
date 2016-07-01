@@ -27,9 +27,6 @@ class Users extends BaseModel
     public $website;
     public $createdAt;
     public $updatedAt;
-    
-      
-    
 
     public function exchangeArray($data)
     {
