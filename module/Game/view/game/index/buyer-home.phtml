@@ -3,7 +3,7 @@
 <link href="<?php echo $this->basePath(); ?>/css/game/index/buyer_home.css" media="screen" rel="stylesheet"
       type="text/css">
 
-<div class="buyer_search">
+<div class="buyer_search col-md-12">
     <div class="input-group">
         <form class="search_submit" method="post" action="<?php echo $this->basePath(); ?>/game/index/buyerhome">
             <select name="select_vehical" class="select_vehical form-control" data-live-search="true">
@@ -22,7 +22,8 @@
         </form>
     </div>
 </div>
-<div class="search_results_display">
+
+<div class="search_results_display col-md-12">
     <table class="table search_results_table">
         <thead>
         <th> Image</th>
@@ -47,7 +48,7 @@
             <?php }
         } else { ?>
             <tr>
-                <td colspan="4"> No Results to display</td>
+                <td colspan="5"> No Results to display</td>
             </tr>
         <?php } ?>
         </tbody>

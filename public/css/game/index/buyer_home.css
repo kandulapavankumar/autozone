@@ -1,6 +1,5 @@
-.buyer_search{
-    margin: 20px;
-    text-align: center;
+.buyer_search > .input-group{
+    margin: 30px auto;
 }
 .keyword_search{
     margin-left: 20px;
