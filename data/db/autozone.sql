@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2016 at 01:50 PM
+-- Generation Time: Jul 02, 2016 at 09:17 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -40,15 +40,17 @@ CREATE TABLE IF NOT EXISTS `listings` (
   PRIMARY KEY (`listing_id`),
   KEY `seller_user_id` (`listing_to_user`),
   KEY `belongs_to_vehicle_type` (`belongs_to_vehicle_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `listings`
 --
 
 INSERT INTO `listings` (`listing_id`, `listing_to_user`, `belongs_to_vehicle_type`, `year`, `make`, `model`, `description`, `price`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 2010, 'CHEVROLET', 'Sonic LT Hatchback Sedan 4D', 'SiriusXM Satellite, F&R Side Air Bags, OnStar, Keyless Entry, Traction Control, Cruise Control, StabiliTrak, Air Conditioning, MP3 (Single Disc), AM/FM Stereo, Power Windows, Power Door Locks, Daytime Running Lights, Tilt & Telescoping Wheel, Head Curtain Air Bags, Bluetooth Wireless, Power Steering, ABS (4-Wheel), Hill Start Assist Control, Dual Air Bags', '10999.00', '2016-06-30 08:44:53', '2016-06-30 08:44:53'),
-(2, 2, 2, 2015, 'NISSAN', 'Versa Note SV Hatchback 4D', 'Includes Manual Recline Height Adjustment and Fore/Aft Movement, Manual Adjustable Front Head Restraints and Fixed Rear Head Restraints', '11299.00', '2016-06-30 08:51:10', '2016-06-30 08:51:10');
+(1, 2, 1, 2015, 'YAMAHA', '2015 YAMAHA XVS1300A V-Star', 'The Speedster Slash-down Motorcycle Exhaust has a full length heat shield and clean lines making Cobra one of the most  stylish and best looking motorcycle exhaust available. The Cobra Speedster Slash-down Motorcycle Exhaust is developed and has been tested to increase the power of your motorcycle and to maintain the overall ride. The Cobra Speedster Slash-Down gives off a great sound and style that you would expect from Cobra.', '640.00', '2016-07-02 18:44:32', '2016-07-02 18:44:32'),
+(2, 2, 2, 2015, 'Chevrolet', 'Chevrolet Silverado 1500', 'Great MPG: 23 MPG Hwy! Just lowered by $851** OPTIONAL EQUIPMENT INCLUDES: Engine: 5.3L EcoTec3 V8 w/Flex Fuel - Includes Auxiliary External Transmission Oil Cooler, 720 CCA/80 Amp-hr Maintenance Free HD Battery', '26156.00', '2016-07-02 18:51:20', '2016-07-02 18:51:20'),
+(3, 2, 3, 2015, 'NISSAN', 'Versa Note SV Hatchback 4D', 'Includes Manual Recline Height Adjustment and Fore/Aft Movement, Manual Adjustable Front Head Restraints and Fixed Rear Head Restraints', '11299.00', '2016-07-02 18:57:34', '2016-07-02 18:57:34'),
+(4, 2, 4, 2014, 'Forest River', 'Wildwood', 'Used 6 times. I have since purchased a home in the area, so this must go. It has tinted sliding glass doors to keep the heat out, and provide privacy. I have also extended the back, to accommodate a diamond plate tool box for outside storage.', '32000.00', '2016-07-02 19:01:15', '2016-07-02 19:01:15');
 
 -- --------------------------------------------------------
 
@@ -67,15 +69,17 @@ CREATE TABLE IF NOT EXISTS `listing_metadata` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`listing_metadata_id`),
   KEY `meta_listing_idx` (`belongs_to_listing`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `listing_metadata`
 --
 
 INSERT INTO `listing_metadata` (`listing_metadata_id`, `belongs_to_listing`, `color`, `transmission`, `body_type`, `note`, `created_at`, `updated_at`) VALUES
-(1, 1, 'black', 'automatic', '4-Cyl 1.8 Liter', 'The principal prior use of this vehicle was as a Rental Vehicle', '2016-06-30 08:46:16', '2016-06-30 08:46:16'),
-(2, 2, 'red', 'Variable', '4-Cyl 1.6 Liter', '2 Seatback Storage Pockets', '2016-06-30 08:52:15', '2016-06-30 08:52:15');
+(1, 1, 'black', 'automatic', 'Triple chromed, 2-1/2" full-length heat shields', 'Features Cobra PowerPort, and engineering advancement that provides a performance increase similar to the 2-into-1 systems', '2016-07-02 18:49:34', '2016-07-02 18:49:34'),
+(2, 2, 'Summit White', '6-Speed Automatic', 'V8', '7-pin and 4-pin connectors, 720 CCA/80 Amp-hr Maintenance Free HD Battery', '2016-07-02 18:52:18', '2016-07-02 18:52:18'),
+(3, 3, 'red', 'Variable', '4-Cyl 1.6 Liter', '2 Seatback Storage Pockets', '2016-07-02 18:58:25', '2016-07-02 18:58:25'),
+(4, 4, 'white', 'Automatic', 'Park Model', 'The front bedroom offers a queen bed with nightstands on either side of the bed, a front wall wardrobe with shelves, and a dresser. There is also a private entrance from the bedroom to outside. Rear Entertainment; Front Bedroom', '2016-07-02 19:02:27', '2016-07-02 19:02:27');
 
 -- --------------------------------------------------------
 
@@ -91,17 +95,21 @@ CREATE TABLE IF NOT EXISTS `listing_photos` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`listing_photo_id`),
   KEY `belongs_to_listing` (`belongs_to_listing`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `listing_photos`
 --
 
 INSERT INTO `listing_photos` (`listing_photo_id`, `belongs_to_listing`, `url`, `created_at`, `updated_at`) VALUES
-(1, 1, 'car1.jpg', '2016-06-30 08:49:39', '2016-06-30 08:49:39'),
-(2, 1, 'car2.jpg', '2016-06-30 08:49:39', '2016-06-30 08:49:39'),
-(3, 2, 'car1.jpg', '2016-06-30 08:52:40', '2016-06-30 08:52:40'),
-(4, 2, 'car1.jpg', '2016-06-30 08:52:40', '2016-06-30 08:52:40');
+(1, 1, 'bike1.png', '2016-06-30 08:49:39', '2016-07-02 18:48:25'),
+(2, 1, 'bike2.png', '2016-06-30 08:49:39', '2016-07-02 18:48:32'),
+(3, 2, 'truck1.jpg', '2016-06-30 08:52:40', '2016-07-02 18:55:24'),
+(4, 2, 'truck2.png', '2016-06-30 08:52:40', '2016-07-02 18:55:31'),
+(5, 3, 'car1.jpg', '2016-07-02 18:59:11', '2016-07-02 18:59:11'),
+(6, 3, 'car2.jpg', '2016-07-02 18:59:11', '2016-07-02 18:59:11'),
+(7, 4, 'rv1.jpg', '2016-07-02 19:03:56', '2016-07-02 19:03:56'),
+(8, 4, 'rv2.jpg', '2016-07-02 19:03:56', '2016-07-02 19:03:56');
 
 -- --------------------------------------------------------
 
