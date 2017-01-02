@@ -1,0 +1,45 @@
+<link href="<?php echo $this->basePath(); ?>/js/lib/bootstrap-3.1.1/css/bootstrap.min.css" media="screen"
+      rel="stylesheet" type="text/css">
+<link href="<?php echo $this->basePath(); ?>/css/zfc-user/layout.css" media="screen" rel="stylesheet" type="text/css">
+<link href="<?php echo $this->basePath(); ?>/css/zfc-user/login/index.css" media="screen" rel="stylesheet"
+      type="text/css">
+
+<div class="container">
+    <div class="zfcuser-container">
+        <div class="zfcuser-login-container">
+            <div class="zfcuser-header">
+                <?php echo $this->translate('LOGIN'); ?>
+            </div>
+            <?php
+            $form = $this->loginForm;
+            $form->prepare();
+            $form->setAttribute('action', $this->url('zfcuser/login'));
+            $form->setAttribute('method', 'post');
+            ?>
+
+            <?php echo $this->form()->openTag($form) ?>
+
+            <dl class="zend_form">
+                <?php echo $this->formElementErrors($form->get('identity')) ?>
+
+                <dt class="input-label"><?php echo $this->formLabel($form->get('identity')) ?></dt>
+                <dd class="input-field"><?php echo $this->formInput($form->get('identity')) ?></dd>
+
+                <dt class="input-label"><?php echo $this->formLabel($form->get('credential')) ?></dt>
+                <dd class="input-field"><?php echo $this->formInput($form->get('credential')) ?></dd>
+
+                <?php if ($this->redirect): ?>
+                    <input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>"/>
+                <?php endif ?>
+
+                <dd class="zfcuser-login-submit"><?php echo $this->formButton($form->get('submit')) ?></dd>
+            </dl>
+
+            <?php echo $this->form()->closeTag() ?>
+        </div>
+
+    </div>
+</div>
+
+<script src="<?php echo $this->basePath(); ?>/js/lib/jquery/jquery.min.js"></script>
+<script src="<?php echo $this->basePath(); ?>/js/lib/bootstrap-3.1.1/js/bootstrap.min.js"></script>

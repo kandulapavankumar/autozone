@@ -1,0 +1,30 @@
+.zfcuser-container {
+    width: 500px;
+    margin: 30px auto;
+    border: 1px solid #ddd;
+}
+
+.zfcuser-header {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.zfcuser-container .input-label label{
+    font-size: 12px;
+    font-weight: normal;
+    color: #82878e;
+    margin: 20px 0 0 0;
+}
+.zfcuser-container .input-field input{
+    margin: 10px 0 0 0;
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.zfcuser-container ul{
+    padding:0px;
+    list-style-type: none;
+    font-size: 10px;
+    color:rgb(210, 50, 45);
+}

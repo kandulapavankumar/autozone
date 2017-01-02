@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link href="<?php echo $this->basePath(); ?>/js/lib/bootstrap-3.1.1/css/bootstrap.min.css" media="screen"
+          rel="stylesheet" type="text/css">
+    <link href="<?php echo $this->basePath(); ?>/css/game/layout.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="<?php echo $this->basePath(); ?>/js/lib/jquery/jquery.min.js"></script>
+    <script src="<?php echo $this->basePath(); ?>/js/lib/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <title>AutoZone</title>
+</head>
+<body>
+<div class="header">
+    <div class="header_space"></div>
+    <div class="header_title"> AutoZone</div>
+</div>
+<?php
+if (isset($this->userName)) {
+    ?>
+    <div class="dropdown dropdown_header">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            <?php echo $this->userName; ?>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="<?php echo $this->basePath(); ?>">Home</a></li>
+            <li><a href="<?php echo $this->basePath(); ?>/user/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <?php
+}
+?>
+<?php echo $this->content; ?>
+
+</body>
+</html>

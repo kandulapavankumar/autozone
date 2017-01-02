@@ -1,0 +1,34 @@
+Emperico Web App
+=================
+
+Introduction
+------------
+This is a Web application using the ZF2.
+
+Installation
+------------
+
+1) Clone the repository from here
+    git@git.riktamtech.com:kishor/emperico.git
+
+2) Install the composer using below command
+    curl -s https://getcomposer.org/installer | php
+
+3) Install all dependecnies
+    php composer.phar install
+
+Setting the project
+--------------------
+1) Move the config/autoload/local.php.dist to  config/autoload/local.php
+2) Modify local.php file
+
+
+3) Move the config/autoload/phpSettings.local.php.dist to  config/autoload/phpSettings.local.php
+4) Modify phpSettings.local.php file
+
+5) Create a file "data/logs/logfile" for error logging
+6) Change permissions for log file (sudo chmod 666 data/logs/logfile)
+
+7) Make sure db is setup and all migrations are run
+8) Move the config/autoload/db.local.php.dist to  config/autoload/db.local.php
+9) Modify contents of db.local.php file
